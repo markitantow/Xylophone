@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import AVFoundation
+
+var audioPlayer : AVAudioPlayer!
+let soundNote = ["C", "D", "E", "F", "G", "A", "B"]
+
 
 class ViewController: UIViewController {
 
@@ -16,6 +21,15 @@ class ViewController: UIViewController {
 
 
     
-
+    @IBAction func keyPressed(_ sender: UIButton) {
+        
+        var tag = sender.tag
+        let url = Bundle.main.url(forResource: "\(soundNote[tag])", withExtension: "wav")
+             
+            audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.play()
+        
+    }
+    
 }
 
